@@ -8,9 +8,7 @@ import Product from './products';
 })
 export class AppComponent implements OnInit {
   title = 'FrontEnd';
-
   products: Product[] = [];
-  isChecked: boolean = false;
 
   constructor() { }
 
