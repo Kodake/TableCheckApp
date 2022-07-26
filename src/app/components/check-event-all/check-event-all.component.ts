@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, AfterContentChecked } from '@angular/core';
 import Product from 'src/app/products';
 
 @Component({
@@ -47,24 +47,32 @@ export class CheckEventAllComponent implements OnInit {
       { id: 28, name: 'Product 28', price: 100, isChecked: false },
       { id: 29, name: 'Product 29', price: 200, isChecked: false },
       { id: 30, name: 'Product 1', price: 100, isChecked: false },
+      { id: 31, name: 'Product 2', price: 200, isChecked: false },
+      { id: 32, name: 'Product 3', price: 300, isChecked: false },
+      { id: 33, name: 'Product 4', price: 400, isChecked: false },
+      { id: 34, name: 'Product 5', price: 500, isChecked: false },
     ];
   }
 
   checkUncheckAll(e: any) {
-    // console.log(e);
     for (var i = 0; i < this.products.length; i++) {
       this.validateExistCheckedItem(i, this.products[i]);
     }
-
-    this.getCheckedItemList();
   }
 
-  isAllSelected() {
-    this.isAllChecked = this.products.every(function (item: any) {
-      return item.isChecked == true;
-    });
+  isSelected(e: any, index: number) {
+    this.products[index].isChecked = !this.products[index].isChecked;
+    return this.validateIndividualCheckedItem(e, index, this.products[index]);
+  }
 
-    this.getCheckedItemList();
+  validateIndividualCheckedItem(e: any, index: number, product: Product) {
+    if (this.products.find(x => x.isChecked && x.name === product.name && x.price === product.price)) {
+      e.target.checked = false;
+      return this.products[index].isChecked = false;
+    }
+
+    e.target.checked = true;
+    return this.products[index].isChecked = true;
   }
 
   validateExistCheckedItem(index: number, product: Product) {
@@ -73,14 +81,6 @@ export class CheckEventAllComponent implements OnInit {
     }
 
     return this.products[index].isChecked = this.isAllChecked;
-  }
-
-  getCheckedItemList() {
-    this.checkedProducts = [];
-    for (var i = 0; i < this.products.length; i++) {
-      if (this.products[i].isChecked)
-        this.checkedProducts.push(this.products[i]);
-    }
   }
 
 }
