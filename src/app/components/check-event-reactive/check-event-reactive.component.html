@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="bd-example">
+        <h1>Angular CheckBox Example</h1>
+
+        <form [formGroup]="form" (ngSubmit)="submit()">
+
+            <div class="form-group">
+                <label for="website">Website:</label>
+                <div *ngFor="let web of websiteList">
+                    <label>
+                        <input type="checkbox" [value]="web.id" (change)="onCheckboxChange($event)" />
+                        {{web.name}}
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+        </form>
+    </div>
+</div>

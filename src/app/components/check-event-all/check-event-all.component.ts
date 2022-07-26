@@ -59,17 +59,7 @@ export class CheckEventAllComponent implements OnInit {
     this.getCheckedItemList();
   }
 
-  isSelected(e: any, index: number) {
-    if (this.products.find(x => x.isChecked === true && x.name === this.products[index - 1].name && x.price === this.products[index - 1].price)) {
-      const elemChecked = e.target.checked = false;
-      return elemChecked;
-    }
-
-    const elemChecked = e.target.checked = true;
-    return elemChecked;
-  }
-
-  isAllSelected(e: any, index: number) {
+  isAllSelected() {
     this.isAllChecked = this.products.every(function (item: any) {
       return item.isChecked == true;
     });

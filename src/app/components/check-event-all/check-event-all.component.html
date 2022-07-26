@@ -17,7 +17,7 @@
                     <th>{{item.price}}</th>
                     <th>
                         <input #row_check class="form-check-input" type="checkbox" [(ngModel)]="item.isChecked"
-                            (change)="isAllSelected($event, item.id!)" (click)="isSelected($event, item.id!)" />
+                            (change)="isAllSelected()" />
                     </th>
                 </tr>
             </tbody>
