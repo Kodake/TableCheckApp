@@ -9,6 +9,7 @@ import Product from 'src/app/products';
 export class CheckEventAllComponent implements OnInit {
   isAllChecked: boolean = false;
   products: Product[] = [];
+  allProducts: Product[] = [];
   reverse: boolean = false;
   pageSize: number = 10;
   page: number = 1;
@@ -83,7 +84,7 @@ export class CheckEventAllComponent implements OnInit {
   }
 
   search(value: string): Product[] {
-    return this.products.filter((val: Product) => val.name?.toLowerCase().indexOf(value) !== -1);
+    return this.allProducts.filter((val: Product) => val.name?.toLowerCase().indexOf(value) !== -1);
   }
 
 }

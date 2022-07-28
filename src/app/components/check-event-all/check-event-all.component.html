@@ -1,10 +1,8 @@
 <div class="container">
     <div class="bd-example">
 
-        <form class="wrap">
-            <input type="text" class="form-control mt-5" name="searchTerm" [(ngModel)]="searchTerm"
-                (ngModelChange)="search(searchTerm)" placeholder="Filter by product name" />
-        </form>
+        <input type="text" class="form-control mt-5" name="searchTerm" [(ngModel)]="searchTerm"
+            (ngModelChange)="search(searchTerm)" placeholder="Filter by product name" />
 
         <table class="table table-hover">
             <thead>
@@ -13,7 +11,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
                     <th *ngIf="!isAllChecked">
-                        <button type="button" class="btn btn-sm" (click)="checkUncheckAll()"><i
+                        <button type="button" class="btn btn-sm" (click)="checkUncheckAll()" [disabled]="allProducts.length > 0"><i
                                 class="fal fa-square"></i></button>
                     </th>
                     <th *ngIf="isAllChecked">
