@@ -9,9 +9,9 @@ import Product from 'src/app/products';
 export class CheckEventAllComponent implements OnInit {
   isAllChecked: boolean = false;
   products: Product[] = [];
-  checkedProducts: Product[] = [];
   reverse: boolean = false;
-  p: number = 1;
+  pageSize: number = 10;
+  page: number = 1;
 
   constructor() { }
 
