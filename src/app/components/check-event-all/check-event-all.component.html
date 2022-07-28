@@ -6,18 +6,24 @@
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
-                    <th scope="col"><input class="form-check-input" type="checkbox" [(ngModel)]="isAllChecked"
-                            (change)="checkUncheckAll($event)" /></th>
+                    <th *ngIf="!isAllChecked">
+                        <button type="button" class="btn btn-sm pull-left" (click)="checkUncheckAll()"><i class="fal fa-square"></i></button>
+                    </th>
+                    <th *ngIf="isAllChecked">
+                        <button type="button" class="btn btn-sm" (click)="checkUncheckAll()"><i class="fal fa-check-square"></i></button>
+                    </th>
                 </tr>
             </thead>
             <tbody>
-                <!-- <tr *ngFor="let item of products | paginate: { itemsPerPage: 10, currentPage: p }; index as i"> -->
-                <tr *ngFor="let item of products; let i = index">
+                <tr *ngFor="let item of products | paginate: { itemsPerPage: 10, currentPage: p }; index as i">
                     <th>{{item.id}}</th>
                     <th>{{item.name}}</th>
                     <th>{{item.price}}</th>
-                    <th>
-                        <input class="form-check-input" type="checkbox" [value]="item.isChecked" [(ngModel)]="item.isChecked" (change)="isSelected($event, i)" />
+                    <th *ngIf="!item.isChecked">
+                        <button type="button" class="btn btn-sm pull-left" (click)="isSelected(item)"><i class="fal fa-square"></i></button>
+                    </th>
+                    <th *ngIf="item.isChecked">
+                        <button type="button" class="btn btn-sm" (click)="isSelected(item)"><i class="fal fa-check-square"></i></button>
                     </th>
                 </tr>
             </tbody>

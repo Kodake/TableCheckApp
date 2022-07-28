@@ -54,33 +54,31 @@ export class CheckEventAllComponent implements OnInit {
     ];
   }
 
-  checkUncheckAll(e: any) {
-    for (var i = 0; i < this.products.length; i++) {
-      this.validateExistCheckedItem(i, this.products[i]);
-    }
+  checkUncheckAll() {
+    this.isAllChecked = !this.isAllChecked;
+    this.products.forEach(item => {
+      this.validateExistCheckedItem(item);
+    });
   }
 
-  isSelected(e: any, index: number) {
-    this.products[index].isChecked = !this.products[index].isChecked;
-    return this.validateIndividualCheckedItem(e, index, this.products[index]);
+  isSelected(item: Product) {
+    this.validateIndividualExistCheckedItem(item);
   }
 
-  validateIndividualCheckedItem(e: any, index: number, product: Product) {
-    if (this.products.find(x => x.isChecked && x.name === product.name && x.price === product.price)) {
-      e.target.checked = false;
-      return this.products[index].isChecked = false;
+  validateIndividualExistCheckedItem(item: Product) {
+    if (this.products.find(x => x.isChecked && x.name === item.name && x.price === item.price)) {
+      return item.isChecked = false;
     }
 
-    e.target.checked = true;
-    return this.products[index].isChecked = true;
+    return item.isChecked = true;
   }
 
-  validateExistCheckedItem(index: number, product: Product) {
-    if (this.products.find(x => x.isChecked && x.name === product.name && x.price === product.price)) {
-      return this.products[index].isChecked = false;
+  validateExistCheckedItem(item: Product) {
+    if (this.products.find(x => x.isChecked && x.name === item.name && x.price === item.price)) {
+      return item.isChecked = false;
     }
 
-    return this.products[index].isChecked = this.isAllChecked;
+    return item.isChecked = this.isAllChecked;
   }
 
 }
