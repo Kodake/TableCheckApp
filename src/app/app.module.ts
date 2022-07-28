@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CheckEventAllComponent } from './components/check-event-all/check-event-all.component';
 import { CheckEventReactiveComponent } from './components/check-event-reactive/check-event-reactive.component';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CheckEventAllComponent,
-    CheckEventReactiveComponent
+    CheckEventReactiveComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,

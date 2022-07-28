@@ -12,6 +12,7 @@ export class CheckEventAllComponent implements OnInit {
   reverse: boolean = false;
   pageSize: number = 10;
   page: number = 1;
+  searchTerm = '';
 
   constructor() { }
 
@@ -79,6 +80,10 @@ export class CheckEventAllComponent implements OnInit {
     }
 
     return item.isChecked = this.isAllChecked;
+  }
+
+  search(value: string): Product[] {
+    return this.products.filter((val: Product) => val.name?.toLowerCase().indexOf(value) !== -1);
   }
 
 }
